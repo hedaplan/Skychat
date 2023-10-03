@@ -17,24 +17,6 @@ function girisYap() {
                         // Kullanıcının e-posta adresini alın
                         var userEmail = user[userID].email;
 
-                        // Firebase Realtime Database veya Firestore üzerinde kullanıcının profil fotoğrafının yolunu alın
-                        firebase.database().ref("users/" + userID + "/profilePhotoURL").once("value")
-                            .then((photoSnapshot) => {
-                                if (photoSnapshot.exists()) {
-                                    var profilePhotoURL = photoSnapshot.val();
-
-                                    // Profil fotoğrafını HTML'de görüntülemek için bir img öğesi oluşturun
-                                    var profilePhotoImg = document.createElement("img");
-                                    profilePhotoImg.src = profilePhotoURL;
-                                    profilePhotoImg.alt = "Profil Fotoğrafı";
-                                    document.getElementById("profilFoto").appendChild(profilePhotoImg);
-                                } else {
-                                    console.log("Profil fotoğrafı bulunamadı.");
-                                }
-                            })
-                            .catch((error) => {
-                                console.error("Profil fotoğrafı alınırken hata oluştu: " + error);
-                            });
 
                         console.log("Giriş başarılı: " + name);
                         $("#logo").hide();
@@ -60,19 +42,14 @@ function girisYap() {
     }
 }
 
-
-
-
-
-
 // Giriş yapma işlemi
 $("#girisYapBtn").click(function() {
     girisYap();
 });
 
-$(document).ready(function () {
-    chatYukle();
-});
+
+
+
 
 function mesajGonder() {
     var mesaj = $("#mesaj").val();
@@ -133,6 +110,11 @@ function chatYukle() {
         });
     });
 }
+
+
+$(document).ready(function () {
+    chatYukle();
+});
 
 
 // Dosya seçildiğinde tetiklenecek işlev
@@ -233,6 +215,9 @@ function dosyaYukle() {
 // Mesaj yazma alanını seçin
 var mesajInput = document.getElementById('mesaj');
 
+
+
+
 // Enter tuşuna basıldığında mesaj gönderme işlemini yap
 mesajInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter' && !event.shiftKey) { // Enter'a basıldı ve Shift tuşuna basılmadı
@@ -242,15 +227,6 @@ mesajInput.addEventListener('keydown', function(event) {
 });
 
 
-// Dosya yükleme tamamlandığında yapılacak işlemler
-setTimeout(function () {
-    // Dosya yükleme tamamlandıktan 2 saniye sonra yükleme süresi alanını gizler
-    document.getElementById('yuklemeSuresi').style.display = 'none';
-    
-    // Mesaj alanına odaklan
-    document.getElementById('mesaj').focus();
-    
-}, 2000); // 2 saniye
 
 // Mesaj başarıyla gönderildiğinde yapılması gereken işlemler
 $("#mesaj").val('');
@@ -275,42 +251,6 @@ $(document).ready(function () {
 });
 
 
-
-
-
-$(document).ready(function () {
-    // Dark mode durumunu kontrol etmek için bir değişken oluşturun
-    var isDarkMode = false;
-
-    // Sayfa yüklendiğinde, mevcut dark mode durumuna göre arayüzü ayarlayın
-    setDarkModeUI(isDarkMode);
-
-    // Dark Mode düğmesine tıklama olayını ekleyin
-    $("#darkModeToggle").click(function () {
-        // Dark mode durumunu tersine çevirin
-        isDarkMode = !isDarkMode;
-
-        // Dark mode durumunu kaydedin (tarayıcıda saklamak için örneğin localStorage kullanabilirsiniz)
-        // localStorage.setItem("darkMode", isDarkMode);
-
-        // Dark mode durumuna göre arayüzü ayarlayın
-        setDarkModeUI(isDarkMode);
-    });
-
-    // Dark Mode durumuna göre arayüzü ayarlayan işlev
-    function setDarkModeUI(isDarkMode) {
-        if (isDarkMode) {
-            // Dark mode açıkken arayüzü ayarlayın
-            $("body").addClass("dark-mode");
-        } else {
-            // Dark mode kapalıyken arayüzü ayarlayın
-            $("body").removeClass("dark-mode");
-        }
-    }
-
-    // Sayfa yüklendiğinde, önceki dark mode durumunu geri yüklemek için kullanabilirsiniz
-    // Örneğin: isDarkMode = localStorage.getItem("darkMode") === "true";
-});
 
 
   

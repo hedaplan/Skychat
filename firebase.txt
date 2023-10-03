@@ -1,0 +1,19 @@
+    apiKey: "AIzaSyAMsOozZ8yezKLM8pinXUVLLI_eib0Z8_A",
+authDomain: "skychat-7f76d.firebaseapp.com",
+databaseURL: "https://skychat-7f76d-default-rtdb.firebaseio.com",
+projectId: "skychat-7f76d",
+storageBucket: "skychat-7f76d.appspot.com",
+messagingSenderId: "230851704973",
+appId: "1:230851704973:web:ed7dcb67ab517fd4f70ac4"
+
+
+
+
+    databaseURL: "https://skychat-github-version-default-rtdb.firebaseio.com/",
+    apiKey: "AIzaSyChELNb387IRsysC4ffgcqG-BVjMA9DFqQ",
+    authDomain: "skychat-github-version.firebaseapp.com",
+    projectId: "skychat-github-version",
+    storageBucket: "skychat-github-version.appspot.com",
+    messagingSenderId: "270929525462",
+    appId: "1:270929525462:web:bb3f7a236d9e89cbf1e777",
+    measurementId: "G-J2YCFPJSVY"

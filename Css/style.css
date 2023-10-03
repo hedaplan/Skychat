@@ -34,7 +34,7 @@
 .card, .card-body, .card-header {
     max-width: 100%;
     width: 100%;
-    background-image: url('SkychatWallpaper.png');
+    background-image: url('../Photos/SkychatWallpaper.png');
     background-size: cover; /* Resmi ekran boyutuna uygun olarak ölçekler */
     background-position: center; /* Resmi dikey ve yatayda ortalar */
     height: 100vh;
@@ -413,4 +413,74 @@ h1 {
   .popup{
     width: 70%;
   }
+}
+
+
+
+
+
+/* Temel stil */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('../Photos/SkychatWallpaper.png');
+    background-size: cover; /* Resmi ekran boyutuna uygun olarak ölçekler */
+    background-position: center; /* Resmi dikey ve yatayda ortalar */  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Kutucuk içinde düzgün hizalama */
+  margin: 0 auto; /* Yatayda ortaya hizalama */
+}
+
+button[type="submit"]:hover {
+  background-color: #28a745;
+}
+
+#kayitEkrani {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b7b7b7b7; /* Arka plan rengi beyaz */
+    border-radius: 10px; /* Kenarları yuvarlatma */
+    padding: 20px; /* İçeriği biraz içeri almak için padding ekleme */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Hafif bir gölge efekti eklemek için box-shadow */
 }
