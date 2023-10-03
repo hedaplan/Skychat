@@ -1,0 +1,184 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SkyChat Kayıt</title>
+  </head>
+  
+  <body>
+    <form action="" method="POST" id="registrationform">
+  
+      <div id="kayitEkrani">
+        <div id="logo">
+            <img src="logo.png" class="hedlogo" alt="SkyChat Logo">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Kullanıcı Adı" aria-label="Name" id="name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-posta adresi" aria-label="E-posta adresi" id="email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Şifre" aria-label="password" id="password">
+        </div>
+        
+        <button class="btn btn-success btn-block" type="submit" sendMessage()>Kayıt Ol</button>
+        <div class="text-center mt-2">Hesabınız var mı? <a href="index.html">Giriş Yap</a>   
+        </div>
+
+    </form>
+    
+
+     <script type="module">
+  
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+  
+        const firebaseConfig = {
+            apiKey: "AIzaSyAMsOozZ8yezKLM8pinXUVLLI_eib0Z8_A",
+        authDomain: "skychat-7f76d.firebaseapp.com",
+        databaseURL: "https://skychat-7f76d-default-rtdb.firebaseio.com",
+        projectId: "skychat-7f76d",
+        storageBucket: "skychat-7f76d.appspot.com",
+        messagingSenderId: "230851704973",
+        appId: "1:230851704973:web:ed7dcb67ab517fd4f70ac4"
+        };
+  
+        // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+  
+      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+  
+  
+  
+      //listen for submit event//(1)
+      document
+        .getElementById('registrationform')
+        .addEventListener('submit', formSubmit);
+  
+      //Submit form(2)
+      function formSubmit(e) {
+  e.preventDefault();
+  // Get Values from the DOM
+  let name = document.querySelector('#name').value;
+  let email = document.querySelector('#email').value;
+  let password = document.querySelector('#password').value;
+
+  // Boş alanları kontrol et
+  if (name === "" || email === "" || password === "") {
+    alert("Lütfen tüm alanları doldurun.");
+    return; // Formu gönderme işlemi durduruluyor
+  }
+
+  //send message values
+  sendMessage(name, email, password);
+}
+
+  
+      //Send Message to Firebase(4)
+      //Send Message to Firebase
+// Kaydolma tarihinin verisini çekmek için kullanacağımız bir alan ekleyin
+function sendMessage(name, email, password) {
+  const database = getDatabase();
+  const tarih = new Date().toString(); // Kaydolma tarihini al
+
+  set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
+    name: name,
+    email: email,
+    password: password,
+    registerdate: tarih // Kaydolma tarihini ekleyin
+  })
+    .then(() => {
+      // Kayıt başarılı mesajını göster
+      alert("Kayıt başarıyla tamamlandı! Giriş sayfasına yönlendiriliyorsunuz.");
+
+      setTimeout(function () {
+        // Login sayfasına yönlendir
+        window.location.href = "index.html";
+      }, 1000);
+      // Formu sıfırla
+      document.getElementById('registrationform').reset();
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+
+
+    </script>
+  </body>
+  <style>
+
+/* Temel stil */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('SkychatWallpaper.png');
+    background-size: cover; /* Resmi ekran boyutuna uygun olarak ölçekler */
+    background-position: center; /* Resmi dikey ve yatayda ortalar */  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Kutucuk içinde düzgün hizalama */
+  margin: 0 auto; /* Yatayda ortaya hizalama */
+}
+
+button[type="submit"]:hover {
+  background-color: #28a745;
+}
+
+#kayitEkrani {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b7b7b7b7; /* Arka plan rengi beyaz */
+    border-radius: 10px; /* Kenarları yuvarlatma */
+    padding: 20px; /* İçeriği biraz içeri almak için padding ekleme */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Hafif bir gölge efekti eklemek için box-shadow */
+}
+
+
+
+  </style>
+  </html>
+  

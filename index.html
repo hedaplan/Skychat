@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SkyChat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+            <div class="card-body">
+
+ 
+
+
+                <div id="girisEkrani">
+                    <div id="logo">
+                        <img src="logo.png" class="hedlogo" alt="SkyChat Logo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Kullanıcı adı giriniz" aria-label="Name" id="name" required>
+                    </div>
+                    
+
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Şifre giriniz" aria-label="password" id="password" required>
+                    </div>
+                    <button type="button" onclick="girisYap();" class="btn btn-success btn-block">Giriş Yap</button>
+                    <div class="text-center mt-2"> Henüz bir hesabınız yok mu? <a href="register.html">Kayıt Ol</a>   
+
+                        <div class="form-group">
+                            <input type="checkbox" id="beniHatirla" name="beniHatirla">
+                            <label for="beniHatirla">Beni Hatırla</label>
+                        </div>
+                        
+                    </div>
+
+                    
+                </div>
+
+                <div id="yuklemeSuresi"></div>
+
+                <div id="chatEkrani" style="display:none;">
+
+                    <nav role="navigation">
+                        <div id="menuToggle">
+                        
+                        <input type="checkbox" />
+                        
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul id="menu">
+                             <a class="button" href="#whatishedmedia">HED MEDIA NEDİR?</a>
+                            <div id="whatishedmedia" class="overlay">
+                                <div class="popup">
+                                    <h2>HED MEDIA NEDİR?</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        HED MEDIA, 2019 yılında bir girişimci genç tarafından kurulan bir medya ve teknoloji şirketidir. Şirket, genellikle programlama alanında faaliyet göstermekle birlikte, aynı zamanda tasarım ve video düzenleme gibi yaratıcı işlerde de uzmanlaşmıştır. Bu çok yönlülük, HED MEDIA'nın müşterilerine çeşitli dijital çözümler sunma yeteneği ile sonuçlanmıştır. Şirket, teknoloji ve sanatı bir araya getirerek müşteri ihtiyaçlarına uygun özgün ve etkili projeler üretmektedir. HED MEDIA, inovasyon ve kaliteye verdiği önemle bilinir ve müşteri memnuniyetini her zaman öncelik olarak görmektedir.
+                                    </div>
+                                    <h2>SİTENİN AMACI NEDİR?</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        Gayet kolay <b><i>ANONİM OLMAK</i></b>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                        </div>
+                    </nav>
+
+                    <div id="mesajAlani">
+                        <div id="dosyaYuklemeGostergesi" class="dosya-yukleme-gostergesi">
+                            <div class="progress-container">
+                                <div class="progress-bar" id="yuklemeCubugu"></div>
+                            </div>
+                            <div class="yukleme-durumu" id="yuklemeDurumu">Dosya yükleniyor...</div>
+                        </div>
+                        
+                        <!-- Mesajlar burada görüntülenecek -->
+                    </div>
+                    <div id="yeniMesajAlani" class="form-row">
+                        <div class="col-3">
+                                <!-- Dosya yükleme butonu -->
+                                
+                        </div>                        
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label for="dosyaInput" class="btn btn-warning">
+                                    <input type="file" onclick="dosyaYukle();" id="dosyaInput" accept="image/*" style="display:none;" />
+                                    <i class="fas fa-file"></i>
+                                </label>
+                                <input type="text" class="form-control" id="mesaj" placeholder="Mesaj yazınız.." />
+                                <div class="input-group-append">
+                                    <!-- Gönder düğmesi -->
+                                    <label type="button" onclick="mesajGonder();" class="btn btn-success">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    
+                </div>
+            </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js"></script>
+    <script src="functions.js"></script>
+    <script src="firebase.js"></script>
+
+</body>
+</html>
