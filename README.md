@@ -1,2 +1,2 @@
-# skychat
-Skychat is a secret messaging site between friends that resets its database anonymously every 24 hours.
+# Skychat
+Skychat is an anonymous messaging application between friends. It is a messaging site based on firebase database.
